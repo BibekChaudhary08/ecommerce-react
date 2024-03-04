@@ -1,10 +1,19 @@
 import React from 'react'
-import { Layout } from '../../components'
+import { Category, HeroSection, HomePageProductCard, Layout, Testimonials, Track } from '../../components'
+
 
 const HomePage = () => {
   return (
     <div>
-        <Layout>Home Page</Layout>
+        <Layout>
+          
+          <HeroSection />  
+          <Category />
+          <HomePageProductCard />
+          <Track />
+          <Testimonials />
+          
+        </Layout> 
     </div>
   )
 }
