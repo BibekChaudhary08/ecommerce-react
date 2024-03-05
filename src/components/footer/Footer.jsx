@@ -27,7 +27,7 @@ const Footer = () => {
                     <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
                         {/* facebook  */}
                         <a className="text-gray-100 cursor-pointer">
-                            <svg
+                        <svg
                                 fill="currentColor"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"

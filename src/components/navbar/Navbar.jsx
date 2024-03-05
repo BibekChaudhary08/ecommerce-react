@@ -21,7 +21,7 @@ const Navbar = () => {
             </li>
 
             <li>
-                <Link to={'/cart'}>
+                <Link to={'/cartpage'}>
                     Cart(0)
                 </Link>
             </li>
@@ -41,6 +41,7 @@ const Navbar = () => {
                 </div>
 
                 <SearchBar />
+
             </div>
         </nav>
     );

@@ -9,6 +9,7 @@ import Category from "./category/Category";
 import HomePageProductCard from "./homepageproductcard/HomePageProductCard";
 import Track from "./track/Track";
 import Testimonials from "./testimonials/Testimonials";
+import ScrollTop from "./scrolltop/ScrollTop";
 
 export{
     Footer,
@@ -22,4 +23,5 @@ export{
     HomePageProductCard,
     Track,
     Testimonials,
+    ScrollTop,
 }
