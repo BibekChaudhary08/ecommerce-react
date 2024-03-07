@@ -8,6 +8,7 @@ import CartPage from './pages/cartpage/CartPage'
 import AllProductPage from './pages/allproduct/AllProductPage'
 import Signup from './pages/registration/Signup'
 import Login from './pages/registration/Login'
+import UserDashboard from './pages/userdashboard/UserDashboard'
 const App = () => {
   return (
     <div>
@@ -21,6 +22,7 @@ const App = () => {
           <Route path='/allproduct' element= {<AllProductPage />} />
           <Route path='/signup' element= {<Signup />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/userdashboard' element={<UserDashboard />} />
         </Routes>
       </Router>
     </div>
