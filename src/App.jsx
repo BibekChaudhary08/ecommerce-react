@@ -9,7 +9,7 @@ import AllProductPage from './pages/allproduct/AllProductPage'
 import Signup from './pages/registration/Signup'
 import Login from './pages/registration/Login'
 import UserDashboard from './pages/userdashboard/UserDashboard'
-import AdminDashboard from './pages/admindashboard/AdminDashboard'
+import AdminDashboard from './pages/admin/AdminDashboard'
 const App = () => {
   return (
     <div>
