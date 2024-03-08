@@ -10,6 +10,9 @@ import HomePageProductCard from "./homepageproductcard/HomePageProductCard";
 import Track from "./track/Track";
 import Testimonials from "./testimonials/Testimonials";
 import ScrollTop from "./scrolltop/ScrollTop";
+import TotalProducts from "./admin/TotalProducts";
+import TotalOrders from "./admin/TotalOrders";
+import TotalUsers from "./admin/TotalUsers";
 
 export{
     Footer,
@@ -24,4 +27,8 @@ export{
     Track,
     Testimonials,
     ScrollTop,
+    TotalProducts,
+    TotalOrders,
+    TotalUsers,
+    
 }

@@ -17,7 +17,11 @@ const Navbar = () => {
             </li>
 
             <li>
-                <Link to={'/userdashboard'}>Bibek</Link>
+                <Link to={'/user-dashboard'}>Bibek</Link>
+            </li>
+
+            <li>
+                <Link  to={'/admin-dashboard'}>Admin</Link>
             </li>
 
             <li>

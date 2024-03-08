@@ -9,6 +9,7 @@ import AllProductPage from './pages/allproduct/AllProductPage'
 import Signup from './pages/registration/Signup'
 import Login from './pages/registration/Login'
 import UserDashboard from './pages/userdashboard/UserDashboard'
+import AdminDashboard from './pages/admindashboard/AdminDashboard'
 const App = () => {
   return (
     <div>
@@ -22,7 +23,8 @@ const App = () => {
           <Route path='/allproduct' element= {<AllProductPage />} />
           <Route path='/signup' element= {<Signup />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/userdashboard' element={<UserDashboard />} />
+          <Route path='/user-dashboard' element={<UserDashboard />} />
+          <Route path='/admin-dashboard' element={<AdminDashboard />} />
         </Routes>
       </Router>
     </div>
