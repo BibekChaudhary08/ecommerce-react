@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../button/Button";
 
 const TotalProducts = () => {
@@ -7,7 +8,9 @@ const TotalProducts = () => {
               {/* text  */}
               <h1 className=" text-xl text-pink-300 font-bold">All Product</h1>
               {/* Add Product Button  */}
-              <Button className="px-5 py-2 bg-pink-300 border border-pink-100 rounded-lg">Add Product</Button>
+              <Link to={'/addproduct-page'}>
+                 <Button className="px-5 py-2 bg-pink-300 border border-pink-100 rounded-lg">Add Product</Button>
+              </Link>
           </div>
 
           {/* table  */}
