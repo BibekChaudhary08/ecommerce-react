@@ -2,6 +2,14 @@ import { Link } from "react-router-dom";
 import SearchBar from "../searchbar/SearchBar";
 
 const Navbar = () => {
+ 
+    const user = JSON.parse(localStorage.getItem('users'));
+    console.log(user);
+
+    const logout = () => {
+        localStorage.clear('users');
+    }
+
     const navList = (
         <ul className="flex space-x-3 text-white font-medium text-md px-5 ">
             <li>
@@ -12,23 +20,42 @@ const Navbar = () => {
                 <Link to={'/allproduct'}>All Product</Link>
             </li>
 
+            {!user &&
+            <li>
+                <Link to={'/login'}>Login</Link>
+            </li>
+            }
+
+            {!user &&
             <li>
                 <Link to={'/signup'}>Signup</Link>
             </li>
+            }
 
+            {user?.role === 'user' &&
             <li>
-                <Link to={'/user-dashboard'}>Bibek</Link>
+                <Link to={'/user-dashboard'}>{user?.name}</Link>
             </li>
+            }
 
+            {user?.role === 'admin' &&
             <li>
-                <Link  to={'/admin-dashboard'}>Admin</Link>
+                <Link  to={'/admin-dashboard'}>{user?.name}</Link>
             </li>
+            }
 
             <li>
                 <Link to={'/cartpage'}>
                     Cart(0)
                 </Link>
             </li>
+
+            {user ?
+            <li>
+                <Link to={'/login'} onClick={logout}>Logout</Link>
+            </li>
+            : ''
+            }
         </ul>
     )
     return (

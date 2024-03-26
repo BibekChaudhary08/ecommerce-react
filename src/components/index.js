@@ -13,6 +13,7 @@ import ScrollTop from "./scrolltop/ScrollTop";
 import TotalProducts from "./admin/TotalProducts";
 import TotalOrders from "./admin/TotalOrders";
 import TotalUsers from "./admin/TotalUsers";
+import Loader from "./loader/Loader";
 
 export{
     Footer,
@@ -30,5 +31,6 @@ export{
     TotalProducts,
     TotalOrders,
     TotalUsers,
+    Loader,
     
 }

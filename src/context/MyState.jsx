@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MyContext from './MyContext'
 
 const MyState = ({children}) => {
-    const name = "Bibek Chaudhari"
+  const [loading, setLoading] = useState(false)
   return (
-    <MyContext.Provider value = {name}>
+    <MyContext.Provider value = {{loading, setLoading}}>
         {children}
     </MyContext.Provider>
     
