@@ -14,6 +14,8 @@ import TotalProducts from "./admin/TotalProducts";
 import TotalOrders from "./admin/TotalOrders";
 import TotalUsers from "./admin/TotalUsers";
 import Loader from "./loader/Loader";
+import ProtectedRouteForUser from "./protectedroute/ProtectedRouteForUser";
+import ProtectedRouteForAdmin from "./protectedroute/ProtectedRouteForAdmin";
 
 export{
     Footer,
@@ -32,5 +34,7 @@ export{
     TotalOrders,
     TotalUsers,
     Loader,
+    ProtectedRouteForUser,
+    ProtectedRouteForAdmin
     
 }

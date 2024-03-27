@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom'
 import HomePage from './pages/homepage/HomePage'
 import NoPage from './pages/nopage/NoPage'
 import Productinfo from './pages/productinfo/Productinfo'
-import { ScrollTop } from './components'
+import { ProtectedRouteForAdmin, ProtectedRouteForUser, ScrollTop } from './components'
 import CartPage from './pages/cartpage/CartPage'
 import AllProductPage from './pages/allproduct/AllProductPage'
 import Signup from './pages/registration/Signup'
@@ -28,10 +28,26 @@ const App = () => {
           <Route path='/allproduct' element= {<AllProductPage />} />
           <Route path='/signup' element= {<Signup />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/user-dashboard' element={<UserDashboard />} />
-          <Route path='/admin-dashboard' element={<AdminDashboard />} />
-          <Route path={'/addproduct-page'} element={<AddProductPage />} />
-          <Route path={'/updateproduct-page'} element={<UpdateProductPage />} />
+          <Route path='/user-dashboard' element={
+            <ProtectedRouteForUser>
+              <UserDashboard />
+            </ProtectedRouteForUser>
+          } />
+          <Route path='/admin-dashboard' element={
+            <ProtectedRouteForAdmin>
+              <AdminDashboard />
+            </ProtectedRouteForAdmin>
+          } />
+          <Route path={'/addproduct-page'} element={
+            <ProtectedRouteForAdmin>
+              <AddProductPage />
+            </ProtectedRouteForAdmin>
+          } />
+          <Route path={'/updateproduct-page'} element={
+            <ProtectedRouteForAdmin>
+              <UpdateProductPage />
+            </ProtectedRouteForAdmin>
+          } />
         </Routes>
         <Toaster />
       </Router>
