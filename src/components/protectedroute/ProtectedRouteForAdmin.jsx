@@ -9,9 +9,9 @@ const ProtectedRouteForAdmin = ({children}) => {
         return children;
     }
     else{
-        return navigate('/login');
+        navigate('/login');
     }
-
+    
 }
 
 export default ProtectedRouteForAdmin

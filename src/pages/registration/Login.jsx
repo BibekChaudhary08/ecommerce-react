@@ -49,7 +49,7 @@ const Login = () => {
                         QuerySnapshot.forEach((doc) => (user = doc.data()));
                         localStorage.setItem("users", JSON.stringify(user));
 
-                        if(user.role === 'user'){
+                        if(user?.role === 'user'){
                             navigate('/user-dashboard');
                         }
                         else{
