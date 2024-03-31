@@ -24,9 +24,9 @@ const AdminDashboard = () => {
                         </div>
                         {/* text  */}
                         <div className="">
-                            <h1 className=" text-center text-lg text-pink-500"><span className=" font-bold">Name :</span> {user.name} </h1>
-                            <h1 className=" text-center text-lg text-pink-500"><span className=" font-bold">Email :</span> {user.email} </h1>
-                            <h1 className=" text-center text-lg text-pink-500"><span className=" font-bold">Role :</span> {user.role} </h1>
+                            <h1 className=" text-center text-lg text-pink-500"><span className=" font-bold">Name :</span> {user?.name} </h1>
+                            <h1 className=" text-center text-lg text-pink-500"><span className=" font-bold">Email :</span> {user?.email} </h1>
+                            <h1 className=" text-center text-lg text-pink-500"><span className=" font-bold">Role :</span> {user?.role} </h1>
                         </div>
                     </div>
                 </div>
