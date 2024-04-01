@@ -68,6 +68,7 @@ const AddProductPage = () => {
             return toast.error("All fields are required");
         }
 
+        else{
         setLoading(true);
         try {
             const productRef = collection(fireDB, 'products');
@@ -79,6 +80,7 @@ const AddProductPage = () => {
             console.log(error);
             setLoading(false);
             toast.error("Failed to add product");
+        }
         }
     };
 
@@ -113,9 +115,10 @@ const AddProductPage = () => {
                         name="price"
                         value={product.price}
                         onChange={(e) => {
+                          const newPrice = Math.max(parseFloat(e.target.value), 1);
                           setProduct({
                               ...product,
-                              price: e.target.value
+                              price: newPrice
                           })
                       }}
                         placeholder='Product Price'
