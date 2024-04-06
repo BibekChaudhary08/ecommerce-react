@@ -8,7 +8,7 @@ const TotalProducts = () => {
     // Accessing context to get loading state and all products
     const context = useContext(MyContext);
     const { loading, getAllProduct } = context;
-
+    
     return (
         <div>
             {/* Heading and Add Product Button */}
@@ -42,7 +42,7 @@ const TotalProducts = () => {
                         </tr>
                         {/* Table Rows */}
                         {getAllProduct.map((item, index) => {
-                            const { title, price, category, productImageUrl, date } = item;
+                            const { title, price, category, productImageUrl, date, id } = item;
                             return (
                                 <tr key={index} className="text-pink-300">
                                     {/* Serial Number */}
@@ -61,7 +61,7 @@ const TotalProducts = () => {
                                     </td>
                                     {/* Product Price */}
                                     <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                                        रु{price}
+                                        Rs.{price}
                                     </td>
                                     {/* Product Category */}
                                     <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 first-letter:uppercase ">
@@ -73,7 +73,9 @@ const TotalProducts = () => {
                                     </td>
                                     {/* Edit Action */}
                                     <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 text-green-500 cursor-pointer ">
+                                    <Link to={`/updateproduct-page/${id}`}>
                                         Edit
+                                    </Link>    
                                     </td>
                                     {/* Delete Action */}
                                     <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 text-red-500 cursor-pointer ">
