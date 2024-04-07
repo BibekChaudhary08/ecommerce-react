@@ -3,11 +3,28 @@ import Button from "../button/Button";
 import { useContext } from "react";
 import MyContext from "../../context/MyContext";
 import Loader from "../loader/Loader";
+import { deleteDoc, doc } from "firebase/firestore";
+import { fireDB } from "../../firebase/FirebaseConfig";
+import { toast } from 'react-hot-toast'
 
 const TotalProducts = () => {
     // Accessing context to get loading state and all products
     const context = useContext(MyContext);
-    const { loading, getAllProduct } = context;
+    const { loading, setLoading, getAllProduct, getAllProductFunction } = context;
+
+    const deleteProduct = async (id) => {
+        setLoading(true);
+          try {
+            await deleteDoc(doc(fireDB, 'products', id));
+            setLoading(false);
+            getAllProductFunction();
+            toast.success('Product delete Sucessfully');
+          } catch (error) {
+            toast.error('Error');
+            setLoading(false);
+          }
+
+    }
     
     return (
         <div>
@@ -78,7 +95,9 @@ const TotalProducts = () => {
                                     </Link>    
                                     </td>
                                     {/* Delete Action */}
-                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 text-red-500 cursor-pointer ">
+                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 text-red-500 cursor-pointer "
+                                     onClick={()=> deleteProduct(id)}
+                                    >
                                         Delete
                                     </td>
                                 </tr>

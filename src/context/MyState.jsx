@@ -39,7 +39,8 @@ return (
         loading,
         setLoading,
         getAllProduct,
-        setGetAllProduct
+        setGetAllProduct, 
+        getAllProductFunction
     }}>
         {children}
     </MyContext.Provider>

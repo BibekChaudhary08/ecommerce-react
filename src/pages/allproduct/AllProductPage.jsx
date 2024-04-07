@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router";
 import Layout from "../../components/layout/Layout";
+import { useContext } from "react";
+import MyContext from "../../context/MyContext";
+import { Loader } from "../../components";
 
 // productData 
-const productData = [
+/* const productData = [
     {
         id: 1,
         image: 'https://i.pinimg.com/564x/3e/05/ce/3e05cefbc7eec79ac175ea8490a67939.jpg',
@@ -77,7 +80,13 @@ const productData = [
     }
 ]
 
+*/
+
 const AllProduct = () => {
+
+    const context = useContext(MyContext);
+    const { loading, getAllProduct } = context;
+
     const navigate = useNavigate();
     return (
         <Layout>
@@ -89,17 +98,20 @@ const AllProduct = () => {
 
             {/* main  */}
             <section className="text-gray-600 body-font">
+                <div className="flex justify-center">
+                    { loading && <Loader /> }
+                </div>
                 <div className="container px-5 lg:px-0 py-5 mx-auto">
                     <div className="flex flex-wrap -m-4">
-                        {productData.map((item, index) => {
-                            const { image, title, price } = item
+                        {getAllProduct.map((item, index) => {
+                            const { productImageUrl, title, price, id } = item
                             return (
                                 <div key={index} className="p-4 w-full md:w-1/4">
                                     <div className="h-full border border-gray-300 rounded-xl overflow-hidden shadow-md cursor-pointer">
                                         <img
                                         onClick={()=> navigate('/productinfo')}
                                             className="lg:h-80  h-96 w-full"
-                                            src={image}
+                                            src={productImageUrl}
                                             alt="blog"
                                         />
                                         <div className="p-6">

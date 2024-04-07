@@ -38,7 +38,7 @@ const categoryList = [
 const UpdateProductPage = () => {
 
   const context = useContext(MyContext);
-  const { loading, setLoading } = context;
+  const { loading, setLoading, getAllProductFunction } = context;
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -74,6 +74,7 @@ const UpdateProductPage = () => {
         date: Productdata.date
       })
       setLoading(false);
+      getAllProductFunction(); // This is done for to instantly update the product.
 
     } catch (error) {
       toast.error('Error');

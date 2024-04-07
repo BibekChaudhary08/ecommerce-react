@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import MyContext from "../../context/MyContext";
+import Loader from "../loader/Loader";
 
 // productData 
-const productData = [
+/* const productData = [
     {
         id: 1,
         image: 'https://i.pinimg.com/564x/3e/05/ce/3e05cefbc7eec79ac175ea8490a67939.jpg',
@@ -75,9 +78,13 @@ const productData = [
         quantity: 1,
     }
 ]
+*/
 
 const HomePageProductCard = () => {
     const navigate = useNavigate();
+    const context = useContext(MyContext);
+    const { loading, getAllProduct } = context;
+
     return (
         <div className="mt-10">
             {/* Heading  */}
@@ -85,20 +92,24 @@ const HomePageProductCard = () => {
                 <h1 className=" text-center mb-5 text-2xl font-semibold">Bestselling Products</h1>
             </div>
 
+            <div className="flex justify-center">
+               {loading && <Loader />}
+            </div>
+
             {/* main  */}
             <section className="text-gray-600 body-font">
                 <div className="container px-5 py-5 mx-auto">
                     <div className="flex flex-wrap -m-4">
-                        {productData.map((item, index) => {
-                            const { image, title, price } = item
+                        {getAllProduct.slice(0, 20).map((item, index) => {
+                            const { productImageUrl, title, price, id } = item
                             return (
                                 <div key={index} className="p-4 w-full md:w-1/4">
                                     <div className="h-full border border-gray-300 rounded-xl overflow-hidden shadow-md cursor-pointer">
                                             <img
                                                 onClick={() => (navigate('/productinfo'))}
                                                 className="lg:h-80  h-96 w-full"
-                                                src={image}
-                                                alt="blog"
+                                                src={productImageUrl}
+                                                alt="img"
                                             />
                                         <div className="p-6">
                                             <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
