@@ -12,6 +12,7 @@ import UserDashboard from './pages/userdashboard/UserDashboard'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import AddProductPage from './pages/admin/AddProductPage'
 import UpdateProductPage from './pages/admin/UpdateProductPage'
+import CategoryPage from './pages/category/CategoryPage'
 import MyState from './context/MyState'
 import { Toaster } from 'react-hot-toast'
 
@@ -23,11 +24,12 @@ const App = () => {
         <Routes>
           <Route path='/' element= {<HomePage />} />
           <Route path='/' element= {<NoPage />} />
-          <Route path='/productinfo' element= {<Productinfo />} />
+          <Route path='/productinfo/:id' element= {<Productinfo />} />
           <Route path='/cartpage' element= {<CartPage />} />
           <Route path='/allproduct' element= {<AllProductPage />} />
           <Route path='/signup' element= {<Signup />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/categorypage/:categoryname' element= {<CategoryPage />} />
           <Route path='/user-dashboard' element={
             <ProtectedRouteForUser>
               <UserDashboard />

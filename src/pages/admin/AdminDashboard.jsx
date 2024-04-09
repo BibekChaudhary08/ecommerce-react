@@ -1,5 +1,5 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { TotalOrders, TotalProducts, TotalUsers } from '../../components';
+import { Layout, TotalOrders, TotalProducts, TotalUsers } from '../../components';
 import { useContext } from 'react';
 import MyContext from '../../context/MyContext';
 
@@ -9,7 +9,7 @@ const AdminDashboard = () => {
     const { getAllProduct } = context;
 
     return (
-        <div>
+        <Layout>
             {/* Top */}
             <div className="top mb-5 px-5 mt-5">
                 <div className=" bg-pink-50 py-5 border border-pink-100 rounded-lg">
@@ -142,7 +142,7 @@ const AdminDashboard = () => {
                     </Tabs>
                 </div>
             </div>
-        </div>
+        </Layout>
     );
 }
 
