@@ -1,5 +1,8 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { addToCart, deleteToCart } from '../../store/cartSlice';
+import toast from 'react-hot-toast';
 
 const category = [
     {
@@ -39,6 +42,7 @@ const category = [
 const Category = () => {
 
     const navigate = useNavigate();
+
 
     return (
         <div>

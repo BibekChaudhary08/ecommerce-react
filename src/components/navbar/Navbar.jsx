@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import SearchBar from "../searchbar/SearchBar";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
  
@@ -9,6 +11,8 @@ const Navbar = () => {
     const logout = () => {
         localStorage.clear('users');
     }
+
+    const cartItems = useSelector((state) => state.cart);
 
     const navList = (
         <ul className="flex space-x-3 text-white font-medium text-md px-5 ">
@@ -46,7 +50,7 @@ const Navbar = () => {
 
             <li>
                 <Link to={'/cartpage'}>
-                    Cart(0)
+                    Cart({cartItems.length})
                 </Link>
             </li>
 

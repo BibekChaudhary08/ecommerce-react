@@ -49,6 +49,7 @@ const UpdateProductPage = () => {
     productImageUrl: '',
     category: '',
     description: '',
+    quantity: '',
     time: Timestamp.now(),
     date: new Date().toLocaleString('en-US',{
        month: "short",
@@ -70,6 +71,7 @@ const UpdateProductPage = () => {
         productImageUrl: Productdata.productImageUrl,
         category: Productdata.category,
         description: Productdata.description,
+        quantity: Productdata.quantity,
         time: Productdata.time,
         date: Productdata.date
       })
