@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Layout, Input, Button } from "../../components/index";
+import { Layout, Input, Button, BuyNowProduct } from "../../components/index";
 import { Trash } from 'lucide-react'
 import { decrementQuantity, deleteToCart, incrementQuantity } from "../../store/cartSlice"
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { useEffect } from "react";
 
 const CartPage = () => {
@@ -29,6 +29,7 @@ const CartPage = () => {
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cartItems));
     }, [cartItems])
+
 
     return (
         <Layout>
@@ -143,15 +144,13 @@ const CartPage = () => {
                                         <dd className="text-base font-medium text-gray-900">₹ {cartTotal}</dd>
                                     </div>
                                 </dl>
+                                
                                 <div className="px-2 pb-4 font-medium text-green-700">
                                     <div className="flex gap-4 mb-6">
-                                        <Button
-                                            className="w-full px-4 py-3 text-center text-gray-100 bg-pink-600 border border-transparent dark:border-gray-700 hover:border-pink-500 hover:text-pink-700 hover:bg-pink-100 rounded-xl"
-                                        >
-                                            Buy now
-                                        </Button>
+                                      <BuyNowProduct />
                                     </div>
                                 </div>
+                                
                             </div>
                         </section>
                     </div>

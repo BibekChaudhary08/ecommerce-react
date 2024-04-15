@@ -16,6 +16,7 @@ import TotalUsers from "./admin/TotalUsers";
 import Loader from "./loader/Loader";
 import ProtectedRouteForUser from "./protectedroute/ProtectedRouteForUser";
 import ProtectedRouteForAdmin from "./protectedroute/ProtectedRouteForAdmin";
+import BuyNowProduct from "./buynowproduct/BuyNowProduct";
 
 export{
     Footer,
@@ -35,6 +36,7 @@ export{
     TotalUsers,
     Loader,
     ProtectedRouteForUser,
-    ProtectedRouteForAdmin
+    ProtectedRouteForAdmin,
+    BuyNowProduct
     
 }
