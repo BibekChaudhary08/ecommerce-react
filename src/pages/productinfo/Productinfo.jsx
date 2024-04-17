@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Layout from "../../components/layout/Layout";
 import MyContext from "../../context/MyContext";
 import { Loader, Button } from '../../components/index'
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from 'react-hot-toast';
 import { doc, getDoc } from "firebase/firestore";
 import { fireDB } from "../../firebase/FirebaseConfig";
@@ -17,6 +17,9 @@ const ProductInfo = () => {
     const [product, setProduct] = useState({});
     const cartItems = useSelector((state) => state.cart);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const user = JSON.parse(localStorage.getItem('users'));
 
     // Function to fetch product information
     const getProductInfo = async () => {
@@ -33,8 +36,13 @@ const ProductInfo = () => {
     }
 
     const addToCartFunction = (item) => {
+        if(user){
         dispatch(addToCart(item));
         toast.success('Product Added Successfully');
+        }
+        else{
+            navigate('/login')
+        }
     }
 
     const deleteToCartFunction = (item) => {

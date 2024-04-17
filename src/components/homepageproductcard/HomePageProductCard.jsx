@@ -13,10 +13,19 @@ const HomePageProductCard = () => {
     const cartItems = useSelector((state) => state.cart);
     const dispatch = useDispatch();
 
+    const user = JSON.parse(localStorage.getItem('users'));
+
+
     // Function to add item to cart
     const addToCartFunction = (item) => {
+        if(user){
         dispatch(addToCart(item));
         toast.success('Product Added Successfully'); // Show success toast
+        }
+        else{
+            navigate('/login')
+        }
+
     }
 
     // Function to delete item from cart
@@ -70,7 +79,7 @@ const HomePageProductCard = () => {
 
                                             <div className="flex justify-center">
                                                 {/* Conditional rendering of Add To Cart/Delete To Cart button */}
-                                                {cartItems.some((p) => p.id === item.id) ? (
+                                                  {cartItems.some((p) => p.id === item.id) ? (
                                                     <button className="bg-pink-500 hover:bg-pink-600 w-full text-white py-[4px] rounded-lg font-bold"
                                                             onClick={() => deleteToCartFunction(item)}>
                                                         Delete To Cart

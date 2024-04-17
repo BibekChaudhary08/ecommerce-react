@@ -14,10 +14,18 @@ const AllProduct = () => {
     const cartItems = useSelector((state) => state.cart);
     const dispatch = useDispatch();
 
+    const user = JSON.parse(localStorage.getItem('users'));
+
     // Function to add item to cart
     const addToCartFunction = (item) => {
-        dispatch(addToCart(item));
-        toast.success("Product Added Successfully");
+        if(user){
+            dispatch(addToCart(item));
+            toast.success("Product Added Successfully");
+        }
+        else{
+            navigate('/login');
+        }    
+        
     }
 
     // Function to delete item from cart

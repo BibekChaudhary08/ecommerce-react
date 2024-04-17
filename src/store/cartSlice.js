@@ -28,7 +28,7 @@ const cartSlice = createSlice({
                     item.quantity--;
                 }
             })
-        }
+        },
     }
 });
 

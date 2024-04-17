@@ -37,7 +37,7 @@ const Login = () => {
             try {
                 setLoading(true);
                 const users = await signInWithEmailAndPassword(auth, userSignin.email, userSignin.password);
-                console.log(users.user);
+               // console.log(users.user);
                 try {
                     const q = query(
                         collection(fireDB, 'user'),

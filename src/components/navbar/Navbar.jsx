@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 const Navbar = () => {
  
     const user = JSON.parse(localStorage.getItem('users'));
-    console.log(user);
+    //console.log(user);
 
     const logout = () => {
         localStorage.clear('users');

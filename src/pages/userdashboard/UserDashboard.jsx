@@ -1,4 +1,6 @@
-import Layout from "../../components/layout/Layout";
+import { useContext, useEffect } from "react";
+import { Layout, Loader } from '../../components/index'
+import MyContext from "../../context/MyContext";
 const products = [
     {
         id: 1,
@@ -15,6 +17,13 @@ const products = [
 
 const UserDashboard = () => {
     const user = JSON.parse(localStorage.getItem('users'));
+    const context = useContext(MyContext);
+    const { loading, userOrder } = context;
+
+    useEffect(() => {
+      localStorage.setItem('userOrder', JSON.stringify(userOrder));
+    }, [userOrder])
+    
     return (
         <Layout>
             <div className=" container mx-auto px-4 py-5 lg:py-8">
@@ -38,6 +47,7 @@ const UserDashboard = () => {
                         <h2 className=" text-2xl lg:text-3xl font-bold">Order Details</h2>
 
                         <div className="mt-5 flex flex-col overflow-hidden rounded-xl border border-pink-100 md:flex-row">
+                        {loading && <Loader />}
                             <div className="w-full border-r border-pink-100 bg-pink-50 md:max-w-xs">
                                 <div className="p-8">
                                     <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-1">

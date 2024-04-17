@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Dialog, DialogBody, Button } from '@material-tailwind/react';
 import { Input, Loader } from '../index';
 import { Timestamp, addDoc, collection } from 'firebase/firestore';
@@ -6,13 +6,13 @@ import { fireDB } from '../../firebase/FirebaseConfig';
 import { useDispatch, useSelector } from 'react-redux';
 import MyContext from '../../context/MyContext';
 import { toast } from 'react-hot-toast'; 
+import { useNavigate } from 'react-router-dom';
 
 const BuyNowProduct = () => {
     const [openDialog, setOpenDialog] = useState(false);
-    const cartItems = useSelector((state) => state.cart);
-    const dispatch = useDispatch();
     const context = useContext(MyContext);
     const { loading, setLoading } = context;
+    const navigate = useNavigate();
 
     const handleDialog = () => {
         setOpenDialog(!openDialog);
@@ -41,7 +41,7 @@ const BuyNowProduct = () => {
             setLoading(true);
             try {
                 const orderRef = collection(fireDB, 'orders');
-                await addDoc(orderRef, { cartItems, inputdetail, user });
+                await addDoc(orderRef, inputdetail);
                 setInputDetail({
                     name: '',
                     address: '',
@@ -51,12 +51,14 @@ const BuyNowProduct = () => {
                 toast.success('Order Placed Successfully'); // Display toast message after successfully placing the order
                 setLoading();
                 handleDialog(); // Close the dialog
+
             } catch (error) {
                 toast.error('Error on order Placed.');
                 setLoading(false);
             }
         }
     };
+    
 
     return (
         <div>
@@ -88,6 +90,7 @@ const BuyNowProduct = () => {
                         onClick={() => {
                             handleDialog(); // Close the dialog
                             orderDetails(); // Process the order
+                            navigate('/user-dashboard')
                         }}
                     >
                         Buy Now
