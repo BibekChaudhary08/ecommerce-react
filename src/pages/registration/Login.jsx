@@ -50,7 +50,7 @@ const Login = () => {
                         localStorage.setItem("users", JSON.stringify(user));
 
                         if(user?.role === 'user'){
-                            navigate('/user-dashboard');
+                            navigate('/');
                         }
                         else{
                             navigate('/admin-dashboard');

@@ -30,7 +30,7 @@ const App = () => {
           <Route path='/signup' element= {<Signup />} />
           <Route path='/login' element={<Login />} />
           <Route path='/categorypage/:categoryname' element= {<CategoryPage />} />
-          <Route path='/user-dashboard' element={
+          <Route path='/user-dashboard/' element={
             <ProtectedRouteForUser>
               <UserDashboard />
             </ProtectedRouteForUser>

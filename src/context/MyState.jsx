@@ -72,7 +72,8 @@ return (
         getAllProduct,
         setGetAllProduct, 
         getAllProductFunction,
-        userOrder
+        userOrder,
+        setUserOrder
     }}>
         {children}
     </MyContext.Provider>
