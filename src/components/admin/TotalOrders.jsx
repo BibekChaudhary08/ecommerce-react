@@ -1,22 +1,36 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import MyContext from "../../context/MyContext";
+import { collection, onSnapshot, orderBy, query, doc } from "firebase/firestore";
+import { fireDB } from "../../firebase/FirebaseConfig";
 
 const TotalOrders = () => {
     const context = useContext(MyContext);
-    const { userOrder, setUserOrder } = context;
+    const { setLoading } = context;
 
-    const deleteUserOrder = (orderId) => {
-        const updatedOrders = userOrder.filter(order => order.id !== orderId);
-        setUserOrder(updatedOrders);
-        localStorage.setItem("userOrders", JSON.stringify(updatedOrders));
-    }
+    const [ adminOrders, setAdminOrders ] = useState([]);
+
+    const totalOrdersFunction = async () => {
+        setLoading(true)
+        const q = query(
+            collection(fireDB, 'orders'),
+            orderBy('time')
+        );
+        const data = onSnapshot(q, (QuerySnapshot) => {
+            const adminOrders = [];
+            QuerySnapshot.forEach((doc) => {
+                adminOrders.push({ ...doc.data(), id: doc.id })
+            })
+            setLoading(false);
+            setAdminOrders(adminOrders);
+        })
+
+        return() => data;
+    } 
 
     useEffect(() => {
-        const storedOrders = localStorage.getItem("userOrders");
-        if (storedOrders) {
-            setUserOrder(JSON.parse(storedOrders));
-        }
-    }, []);
+      totalOrdersFunction();
+    }, [])
+    
 
     return (
         <div>
@@ -24,7 +38,7 @@ const TotalOrders = () => {
                 <h1 className="text-xl text-pink-300 font-bold">All Orders</h1>
             </div>
 
-            {userOrder.map((order, orderIndex) => {
+            {adminOrders.map((order, orderIndex) => {
                 const { id: orderId, date, status, pincode, address, mobile_no, cartItemsCopy: orderCartItemsCopy, user } = order;
 
                 return (

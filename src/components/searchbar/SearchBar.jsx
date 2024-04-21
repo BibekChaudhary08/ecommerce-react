@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Input from '../input/Input';
-
+import MyContext from '../../context/MyContext';
+import { useNavigate } from 'react-router-dom';
+/*
 const searchData = [
     {
         name: 'Fashion',
@@ -31,12 +33,17 @@ const searchData = [
         image: 'https://i.pinimg.com/564x/fd/50/68/fd50688767adb47aba7204f034554cbd.jpg'
     },
   ]
+*/
   
 const SearchBar = () => {
 
+   const context = useContext(MyContext);
+   const { getAllProduct } = context;
+   const navigate = useNavigate();
+
    const[search, setSearch] = useState('');
 
-   const filterablesearchdata = searchData.filter((item) => (item.name.toLowerCase().includes(search.toLowerCase()))).slice(0, 8);
+   const filterablesearchdata = getAllProduct.filter((item) => (item.title.toLowerCase().includes(search.toLowerCase()))).slice(0, 8);
 
    return (
     <div className="">
@@ -44,6 +51,7 @@ const SearchBar = () => {
     <div className="input flex justify-center">
         <Input
             type="text"
+            value = {search}
             placeholder='Search here'
             onChange={(e) => (setSearch(e.target.value))}
             className=' bg-gray-200 placeholder-gray-400 rounded-lg px-2 py-2 w-96 lg:w-96 md:w-96 outline-none text-black '
@@ -57,9 +65,11 @@ const SearchBar = () => {
                     {filterablesearchdata.map((item, index) => {
                         return (
                             <div key={index} className="py-2 px-2">
-                                <div className="flex items-center gap-2">
-                                    <img className="w-10" src={item.image} alt="" />
-                                    {item.name}
+                                <div className="flex items-center gap-2 cursor-pointer"
+                                 onClick={() => navigate(`/productinfo/${item.id}`)}
+                                >
+                                    <img className="w-10" src={item.productImageUrl} alt="img" />
+                                    {item.title}
                                 </div>
                             </div>
                         )
