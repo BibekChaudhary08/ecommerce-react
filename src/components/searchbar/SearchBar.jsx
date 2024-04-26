@@ -50,7 +50,7 @@ const SearchBar = () => {
     {/* search input  */}
     <div className="input flex justify-center">
         <Input
-            type="text"
+            type="text" 
             value = {search}
             placeholder='Search here'
             onChange={(e) => (setSearch(e.target.value))}

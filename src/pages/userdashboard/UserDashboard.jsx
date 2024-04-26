@@ -5,14 +5,13 @@ import MyContext from "../../context/MyContext";
 const UserDashboard = () => {
     const user = JSON.parse(localStorage.getItem('users'));
     const context = useContext(MyContext);
-    const { loading, userOrder, setUserOrder } = context; // Assuming setUserOrder is provided by MyContext
+    const { loading, userOrder, setUserOrder } = context;
 
     useEffect(() => {
         localStorage.setItem('userOrder', JSON.stringify(userOrder));
     }, [userOrder])
 
     const handleDeleteOrders = () => {
-        // Clear all orders without removing them from the collection
         setUserOrder([]);
     };
 
@@ -50,7 +49,8 @@ const UserDashboard = () => {
                             {loading && <Loader />}
                         </div>
                         {userOrder.map((order, orderIndex) => {
-                            const { id: orderId, date, status, cartItemsCopy: orderCartItemsCopy } = order;
+                            const { id: orderId, date, status, cartItemsCopy: orderCartItemsCopy, user: userId } = order;
+                            if(userId.uid === user?.uid){
                             return (
                                 <div key={orderIndex}>
                                     <div className="mt-5 flex flex-col overflow-hidden rounded-xl border border-pink-100 md:flex-row">
@@ -109,6 +109,7 @@ const UserDashboard = () => {
                                     </div>
                                 </div>
                             );
+                        }
                         })}
                     </div>
                 </div>
